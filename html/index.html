@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>控制程序</title>
+  <link rel="stylesheet" href="./static/plugin/bootstrap-4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./static/plugin/fonts/fontawesome-all.min.css">
+  <link rel="stylesheet" href="./static/plugin/fonts/fontawesome-all.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body class="bg-myblue-1">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="text-center text-myblue-5 col-2 sidebar">
+        <!-- <img src="./static/image/logo.png" width="80px"> -->
+        TigerTools
+      </div>
+      <nav class="col-10 bd-content shadow mp-3 mb-5 rounded">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class="nav-item" role="presentation">
+              <a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle">
+                <i class="fa fa-bars"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="row">
+      <!-- 导航栏开始 -->
+      <nav id="sidebarMenu" class="col-2 sidebar">
+        <div class="sidebar-sticky pt-3">
+          <ul class="nav nav-tabs flex-column text-mybar">
+            <li class="nav-item mt-2">
+              <a class="nav-link active" href="./index.html">
+                POST TIGER
+              </a>
+            </li>
+            <li class="nav-item mt-2">
+              <a class="nav-link" href="./ping.html">
+                爬小说
+              </a>
+            </li>
+            <li class="nav-item mt-2">
+              <a class="nav-link" href="#">
+                爬音乐
+              </a>
+            </li>
+            <li class="nav-item mt-2">
+              <a class="nav-link" href="#">
+                爬知乎
+              </a>
+            </li>
+            <li class="nav-item mt-2">
+              <a class="nav-link" href="#">
+                正则测试
+              </a>
+            </li>
+            <li class="nav-item mt-2">
+              <a class="nav-link" href="./setting.html">
+                设置
+              </a>
+            </li>
+            <li class="nav-item mt-2">
+              <a class="nav-link" href="./about.html">
+                关于
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- 导航栏结束 -->
+      <!-- 主体开始 -->
+      <main class="col-10 bd-content text-white bg-myblue-2 p-2">
+        <!-- 标题 -->
+        <div class="text-center">
+          <h3>POST TIGER</h3>
+        </div>
+        <!-- 标签页 -->
+        <div class="row label-page m-0">
+          <div class="col active label-page-btn" id="label-page-html">HTML</div>
+          <div class="col label-page-btn" id="label-page-ws">WebSocket</div>
+          <div class="col label-page-btn" id="label-page-tcp">TCP</div>
+          <div class="col label-page-btn" id="label-page-udp">UDP</div>
+        </div>
+        <!-- HTML标签页 -->
+        <div class="card label-page-main" id="label-page-html-main">
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <select class="form-html bg-myblue-2 text-myblue-5" name="method">
+                <option selected>POST</option>
+                <option>GET</option>
+              </select>
+              <select class="form-html bg-myblue-2 text-myblue-5" name="http">
+                <option selected>http</option>
+                <option>https</option>
+              </select>
+              <input class="form-control form-html bg-myblue-2 text-myblue-5" placeholder="except.com/api/" name="url">
+              <button class="btn btn-success" id="html-send-btn">发送</button>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                DATA:
+                <div class="input-group input-group-sm mb-3">
+                  <input class="form-control form-html bg-myblue-2 text-myblue-5" name="data-key-1" placeholder="key">
+                  <input class="form-control form-html bg-myblue-2 text-myblue-5" name="data-val-1" placeholder="value">
+                </div>
+                <!-- 添加按钮 -->
+                <div class="row justify-content-center">
+                  <div class="col-3">
+                    <button type="button" id="html-add-data" class="btn bg-myblue-4 text-white btn-block">+</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                HEADERS:
+                <div class="input-group input-group-sm mb-3">
+                  <input class="form-control form-html bg-myblue-2 text-myblue-5" name="head-key-1" placeholder="key">
+                  <input class="form-control form-html bg-myblue-2 text-myblue-5" name="head-val-1" placeholder="value">
+                </div>
+                <!-- 添加按钮 -->
+                <div class="row justify-content-center">
+                  <div class="col-3">
+                    <button type="button" id="html-add-headers" class="btn bg-myblue-4 text-white btn-block">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- WebSocket标签页 -->
+        <div class="card label-page-main d-none" id="label-page-ws-main">
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <select class="form-ws bg-myblue-2 text-myblue-5" name="ws">
+                <option selected>WS</option>
+                <option>WSS</option>
+              </select>
+              <input class="form-control form-ws bg-myblue-2 text-myblue-5" placeholder="except.com/ws/" name="url">
+              <button class="btn btn-success" id="ws-send-btn">连接</button>
+              <button class="btn btn-danger" id="ws-send-btn">关闭</button>
+            </div>
+            <div class="row">
+              <div class="col">
+                HEADERS:
+                <div class="input-group input-group-sm mb-3">
+                  <input class="form-control form-html bg-myblue-2 text-myblue-5" name="head-key-1" placeholder="key">
+                  <input class="form-control form-html bg-myblue-2 text-myblue-5" name="head-val-1" placeholder="value">
+                </div>
+                <!-- 添加按钮 -->
+                <div class="row justify-content-center">
+                  <div class="col-3">
+                    <button type="button" id="html-add-headers" class="btn bg-myblue-4 text-white btn-block">+</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <p id="ws-msgs-p"></p>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </main>
+      <!-- 主体结束 -->
+    </div>
+  </div>
+</body>
+<script>window.$ = window.jQuery = require('./static/plugin/jquery-3.4.1/jquery.min.js');</script>
+<!-- <script src="./static/plugin/jquery-3.4.1/jquery.min.js"></script> -->
+<script src="./static/plugin/bootstrap-4.5.0/js/bootstrap.min.js"></script>
+<script src="./static/js/index.js"></script>
+
+<script>
+  $("#btn-submit").click(() => {
+    $.ajax({
+      url: "https://www.wanghu.host/a/",
+      type: "post",
+      data: {
+        "a": 8
+      },
+      headers: {
+        'my-change-headers': '["referer"]',
+        'referer__': "https://www.wanghu.host/a/"
+      },
+      success: function (data) {
+        console.log(data);
+      },
+      error: function (data) {
+        alert("ajax失败！");
+      },
+    });
+  });
+</script>
+
+</html>
