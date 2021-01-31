@@ -1,10 +1,11 @@
 {
   "name": "Electron-Tiger-Demo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package:win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --out=out --icon=favicon.ico"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
